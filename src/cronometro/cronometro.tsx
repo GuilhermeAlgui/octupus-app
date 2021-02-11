@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Container, TempoRestante, TempoText } from './cronometroStyled';
-//import { CountdownCircleTimer } from 'react-native-countdown-circle-timer';
 
 interface cronometroProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -17,7 +16,6 @@ function Cronomometro({ handleEnd }: cronometroProps) {
         setSegundosRemanescentes(segundosRemanescentes - 1);
       if (segundosRemanescentes === 0) {
         if (minutosRemanescentes === 0) {
-          // navigation.navigate('Resultado')
           handleEnd();
           return () => clearTimeout(timer);
         }

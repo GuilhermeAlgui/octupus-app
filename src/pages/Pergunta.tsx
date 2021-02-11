@@ -12,13 +12,9 @@ import {
   PerguntaAlternativa,
   OrderContainer,
 } from './StyledComponents/perguntas';
-
-// import { Container } from './styles';
-
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function Pergunta() {
   const { navigate } = useNavigation();
-
   const [perguntas, setPerguntas] = useState([...questions]);
   const [alternativas, setAlternativas] = useState([
     'f',
@@ -38,7 +34,6 @@ function Pergunta() {
     'f',
   ]);
   const [questao, setQuestao] = useState(0);
-  //const [teste, setTeste] = useState('');
 
   useEffect(() => {
     setPerguntas([...questions]);
@@ -56,7 +51,6 @@ function Pergunta() {
   return (
     <Body>
       <Cronometro handleEnd={handleResult} />
-
       <Container>
         <QuestionImage
           source={{
@@ -197,7 +191,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 10,
   },
-
   orderButton: {
     backgroundColor: '#F00',
     paddingVertical: 12,
