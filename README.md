@@ -27,7 +27,7 @@ Tecnologias:
 Desafios adicionais (não obrigatório, mas será um diferencial):
 - Adicione um cronômetro de 10 minutos. Se o usuário não terminar dentro desse
 tempo finalizar o quiz e ir para os resultados: checked (component cronometro.tsx implementado em Pergunta.tsx)
-- Utilizar styled-components para escrever a estilização: not checked
+- Utilizar styled-components para escrever a estilização: checked (pages/StyledComponents && cronometro/cronometroStyled.ts) (Eslint entrou em conflito com o Typescript e o Styled por isso ele exibe um warning sobre o tipo Any mas isso não tem impacto na execução do projeto.)
 - Gerenciar o estado da aplicação com Redux: not checked
 - Configurar prettier e eslint no projeto: checked(normalmente utilizo eles como plugins do VScode mas adicionei no projeto tambem)
 

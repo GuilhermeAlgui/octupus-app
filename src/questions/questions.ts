@@ -1,4 +1,4 @@
-const questions = [
+export const questions = [
   {
     pergunta:
       '(Enem/2018) A rebelião luso-brasileira em Pernambuco começou a ser urdida em 1644 e explodiu em 13 de junho de 1645, dia de Santo Antônio. \n Uma das primeiras medidas de João Fernandes foi decretar nulas as dívidas que os rebeldes tinham com os holandeses. Houve grande adesão da “nobreza da terra”, entusiasmada com esta proclamação heroica. \nO desencadeamento dessa revolta na América portuguesa seiscentista foi o resultado do(a)',
@@ -27,7 +27,6 @@ const questions = [
       },
     ],
     correta: 'e',
-    alternativa: 'f',
   },
   {
     pergunta:
@@ -57,7 +56,6 @@ const questions = [
       },
     ],
     correta: 'b',
-    alternativa: 'f',
   },
   {
     pergunta:
@@ -87,7 +85,6 @@ const questions = [
       },
     ],
     correta: 'b',
-    alternativa: 'f',
   },
   {
     pergunta:
@@ -117,7 +114,6 @@ const questions = [
       },
     ],
     correta: 'a',
-    alternativa: 'f',
   },
   {
     pergunta:
@@ -147,7 +143,6 @@ const questions = [
       },
     ],
     correta: 'b',
-    alternativa: 'f',
   },
   {
     pergunta:
@@ -177,7 +172,6 @@ const questions = [
       },
     ],
     correta: 'b',
-    alternativa: 'f',
   },
   {
     pergunta:
@@ -212,7 +206,6 @@ const questions = [
       },
     ],
     correta: 'd',
-    alternativa: 'f',
   },
   {
     pergunta:
@@ -242,7 +235,6 @@ const questions = [
       },
     ],
     correta: 'c',
-    alternativa: 'f',
   },
   {
     pergunta:
@@ -272,7 +264,6 @@ const questions = [
       },
     ],
     correta: 'e',
-    alternativa: 'f',
   },
   {
     pergunta:
@@ -302,7 +293,6 @@ const questions = [
       },
     ],
     correta: 'e',
-    alternativa: 'f',
   },
   {
     pergunta:
@@ -333,7 +323,6 @@ const questions = [
       },
     ],
     correta: 'a',
-    alternativa: 'f',
   },
   {
     pergunta:
@@ -368,7 +357,6 @@ const questions = [
       },
     ],
     correta: 'a',
-    alternativa: 'f',
   },
   {
     pergunta:
@@ -402,7 +390,6 @@ const questions = [
       },
     ],
     correta: 'e',
-    alternativa: 'f',
   },
   {
     pergunta:
@@ -437,7 +424,6 @@ const questions = [
       },
     ],
     correta: 'c',
-    alternativa: 'f',
   },
   {
     pergunta:
@@ -472,8 +458,5 @@ const questions = [
       },
     ],
     correta: 'd',
-    alternativa: 'f',
   },
 ];
-
-export default questions;

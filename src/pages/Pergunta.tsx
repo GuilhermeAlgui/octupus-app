@@ -1,9 +1,17 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
-import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
-import questions from '../questions/questions';
+import React, { useEffect, useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { questions } from '../questions/questions';
 import Cronometro from '../cronometro/cronometro';
+import {
+  Body,
+  Container,
+  PerguntaContainer,
+  PerguntaText,
+  QuestionImage,
+  PerguntaAlternativa,
+  OrderContainer,
+} from './StyledComponents/perguntas';
 
 // import { Container } from './styles';
 
@@ -12,112 +20,133 @@ function Pergunta() {
   const { navigate } = useNavigation();
 
   const [perguntas, setPerguntas] = useState([...questions]);
+  const [alternativas, setAlternativas] = useState([
+    'f',
+    'f',
+    'f',
+    'f',
+    'f',
+    'f',
+    'f',
+    'f',
+    'f',
+    'f',
+    'f',
+    'f',
+    'f',
+    'f',
+    'f',
+  ]);
   const [questao, setQuestao] = useState(0);
   //const [teste, setTeste] = useState('');
 
+  useEffect(() => {
+    setPerguntas([...questions]);
+  }, []);
+
   function handleResult() {
     let result = 0;
-    perguntas.forEach((pergunta) => {
-      if (pergunta.alternativa === pergunta.correta) result++;
-    });
+    for (let i = 0; i < perguntas.length; i++) {
+      if (perguntas[i].correta === alternativas[i]) result++;
+    }
+
     navigate('Resultado', { result });
   }
 
   return (
-    <View style={{ flex: 1 }}>
+    <Body>
       <Cronometro handleEnd={handleResult} />
 
-      <ScrollView style={styles.container}>
-        <Image
-          style={styles.image}
+      <Container>
+        <QuestionImage
           source={{
             uri: perguntas[questao].imagem,
           }}
         />
-        <Text style={styles.perguntaText}>{perguntas[questao].pergunta}</Text>
-        <ScrollView style={styles.perguntaContainer}>
+        <PerguntaText>{perguntas[questao].pergunta}</PerguntaText>
+        <PerguntaContainer>
           <TouchableOpacity
             onPress={() => {
-              const q = perguntas;
-              q[questao].alternativa = 'a';
-              setPerguntas([...q]);
+              const a = alternativas;
+              a[questao] = 'a';
+              setAlternativas([...a]);
             }}
             style={
-              perguntas[questao].alternativa !== 'a'
+              alternativas[questao] !== 'a'
                 ? styles.perguntaButton
                 : styles.perguntaButtonRes
             }
           >
-            <Text style={styles.pergunta}>
+            <PerguntaAlternativa>
               {perguntas[questao].questoes[0].texto}
-            </Text>
+            </PerguntaAlternativa>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              const q = perguntas;
-              q[questao].alternativa = 'b';
-              setPerguntas([...q]);
+              const a = alternativas;
+              a[questao] = 'b';
+              setAlternativas([...a]);
             }}
             style={
-              perguntas[questao].alternativa !== 'b'
+              alternativas[questao] !== 'b'
                 ? styles.perguntaButton
                 : styles.perguntaButtonRes
             }
           >
-            <Text style={styles.pergunta}>
+            <PerguntaAlternativa>
               {perguntas[questao].questoes[1].texto}
-            </Text>
+            </PerguntaAlternativa>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              const q = perguntas;
-              q[questao].alternativa = 'c';
-              setPerguntas([...q]);
+              const a = alternativas;
+              a[questao] = 'c';
+              setAlternativas([...a]);
             }}
             style={
-              perguntas[questao].alternativa !== 'c'
+              alternativas[questao] !== 'c'
                 ? styles.perguntaButton
                 : styles.perguntaButtonRes
             }
           >
-            <Text style={styles.pergunta}>
+            <PerguntaAlternativa>
               {perguntas[questao].questoes[2].texto}
-            </Text>
+            </PerguntaAlternativa>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              const q = perguntas;
-              q[questao].alternativa = 'd';
-              setPerguntas([...q]);
+              const a = alternativas;
+              a[questao] = 'd';
+              setAlternativas([...a]);
             }}
             style={
-              perguntas[questao].alternativa !== 'd'
+              alternativas[questao] !== 'd'
                 ? styles.perguntaButton
                 : styles.perguntaButtonRes
             }
           >
-            <Text style={styles.pergunta}>
+            <PerguntaAlternativa>
               {perguntas[questao].questoes[3].texto}
-            </Text>
+            </PerguntaAlternativa>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              const q = perguntas;
-              q[questao].alternativa = 'e';
-              setPerguntas([...q]);
+              const a = alternativas;
+              a[questao] = 'e';
+              setAlternativas([...a]);
             }}
             style={
-              perguntas[questao].alternativa !== 'e'
+              alternativas[questao] !== 'e'
                 ? styles.perguntaButton
                 : styles.perguntaButtonRes
             }
           >
-            <Text style={styles.pergunta}>
+            <PerguntaAlternativa>
               {perguntas[questao].questoes[4].texto}
-            </Text>
+            </PerguntaAlternativa>
           </TouchableOpacity>
-        </ScrollView>
-        <View style={styles.orderContainer}>
+        </PerguntaContainer>
+        <OrderContainer>
           {questao !== 0 ? (
             <TouchableOpacity
               onPress={() => {
@@ -145,39 +174,13 @@ function Pergunta() {
               <Text style={styles.orderButtonText}>Finalizar</Text>
             </TouchableOpacity>
           )}
-        </View>
-      </ScrollView>
-    </View>
+        </OrderContainer>
+      </Container>
+    </Body>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    //justifyContent: 'center',
-    //alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-  },
-  image: {
-    width: Dimensions.get('window').width * 0.8,
-    height: Dimensions.get('window').width * 0.6,
-    marginHorizontal: Dimensions.get('window').width * 0.1,
-  },
-  perguntaText: {
-    textAlign:'justify',
-    fontSize: 16,
-    lineHeight: 18,
-    color: '#000000',
-    fontFamily: 'Roboto',
-    fontWeight: 'bold',
-    marginHorizontal: Dimensions.get('window').width * 0.1,
-  },
-  perguntaContainer: {
-    marginTop: 10,
-    //justifyContent: 'space-evenly',
-    flex: 1,
-    paddingHorizontal: Dimensions.get('window').width * 0.1,
-  },
   perguntaButton: {
     backgroundColor: '#3D8EB9',
     paddingVertical: 8,
@@ -194,17 +197,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 10,
   },
-  pergunta: {
-    fontSize: 16,
-    lineHeight: 18,
-    color: '#FFF',
-    fontFamily: 'Roboto',
-  },
-  orderContainer: {
-    flexDirection: 'row',
-    marginHorizontal: Dimensions.get('window').width * 0.1,
-    justifyContent: 'space-between',
-  },
+
   orderButton: {
     backgroundColor: '#F00',
     paddingVertical: 12,

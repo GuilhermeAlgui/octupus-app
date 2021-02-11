@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Container, TempoRestante, TempoText } from './cronometroStyled';
 //import { CountdownCircleTimer } from 'react-native-countdown-circle-timer';
 
 interface cronometroProps {
@@ -13,7 +13,9 @@ function Cronomometro({ handleEnd }: cronometroProps) {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (segundosRemanescentes == 0) {
+      if (segundosRemanescentes > 0)
+        setSegundosRemanescentes(segundosRemanescentes - 1);
+      if (segundosRemanescentes === 0) {
         if (minutosRemanescentes === 0) {
           // navigation.navigate('Resultado')
           handleEnd();
@@ -22,35 +24,23 @@ function Cronomometro({ handleEnd }: cronometroProps) {
         setSegundosRemanescentes(59);
         setMinutosRemanescentes(minutosRemanescentes - 1);
       }
-      if (segundosRemanescentes > 0)
-        setSegundosRemanescentes(segundosRemanescentes - 1);
     }, 1000);
 
     return () => clearTimeout(timer);
   });
 
   return (
-    <View style={styles.container}>
-      <Text>Tempo remanescente: </Text>
-      <Text style={{ fontSize: 40 }}>
+    <Container>
+      <TempoText>Tempo remanescente: </TempoText>
+      <TempoRestante>
         {minutosRemanescentes}:
         {segundosRemanescentes < 10
           ? `0${segundosRemanescentes}`
           : segundosRemanescentes}
         s
-      </Text>
-    </View>
+      </TempoRestante>
+    </Container>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 1,
-    flexDirection: 'row',
-    paddingTop: 15,
-  },
-});
 
 export default Cronomometro;
