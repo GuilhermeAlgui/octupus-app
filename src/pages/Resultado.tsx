@@ -1,5 +1,5 @@
 import { useNavigation, useRoute } from '@react-navigation/native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Container,
   ResultadoContainer,
@@ -20,6 +20,14 @@ function Resultado() {
   const route = useRoute();
   const params = route.params as resultadoParams;
   const navigation = useNavigation();
+
+  useEffect(() => {
+    navigation.addListener('beforeRemove', (e) => {
+      const type = e.data.action.type;
+      if (type === 'GO_BACK') e.preventDefault();
+    });
+  }, []);
+
   return (
     <Container>
       <ResultadoContainer>
